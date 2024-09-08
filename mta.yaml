@@ -32,6 +32,10 @@ modules:
   - name: cap-reuse-html5-destination-service
     parameters:
       content-target: true
+  - name: cap-reuse-html5_html_repo_runtime
+    parameters:
+      service-key:
+        name: cap-reuse-html5_html_repo_runtime-key
   - name: cap-reuse-html5_html_repo_host
     parameters:
       service-key:
@@ -54,6 +58,15 @@ modules:
           ServiceKeyName: cap-reuse-html5-auth-key
           sap.cloud.service: cap-reuse-html5
         existing_destinations_policy: ignore
+      subaccount:
+        destinations:
+        - Name: cap_reuse_html5_cdm
+          ServiceInstanceName: cap-reuse-html5-html5-app-runtime-service
+          ServiceKeyName: cap-reuse-html5-html5-app-runtime-service-key
+          # トライアルのus10リージョンでは、${default-domain}を指定するとus10-001となるが、
+          # html5-app runtimeのドメインはus10なので注意
+          URL: https://html5-apps-repo-rt.cfapps.us10.hana.ondemand.com/applications/cdm/cap-reuse-html5
+        existing_destinations_policy: update
   build-parameters:
     no-source: true
 - name: cap-reuse-html5-app-content
@@ -68,6 +81,7 @@ modules:
     requires:
     - artifacts:
       - miyasutamanagebooks.zip
+      - cdm.json
       name: miyasutamanagebooks
       target-path: resources/
 - name: miyasutamanagebooks
@@ -128,6 +142,16 @@ resources:
     service: html5-apps-repo
     service-name: cap-reuse-html5-html5-app-host-service
     service-plan: app-host
+
+# HTML5 app-runtime resource for CDM DT destination ######################
+- name: cap-reuse-html5_html_repo_runtime
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: cap-reuse-html5-html5-app-runtime-service
+    service-plan: app-runtime
+###########################################################################
+
 parameters:
   deploy_mode: html5-repo
   enable-parallel-deployments: true

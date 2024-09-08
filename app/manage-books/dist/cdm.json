@@ -1,0 +1,158 @@
+[
+  {
+    "_version": "3.0",
+    "identification": {
+      "id": "capProductManagerCatalogId",
+      "title": "{{title}}",
+      "entityType": "catalog"
+    },
+    "payload": {
+      "viz": [
+        {
+          "appId": "miyasuta.managebooks",
+          "vizId": "Books-manage"
+        }
+      ]
+    },
+    "texts": [
+      {
+        "locale": "",
+        "textDictionary": {
+          "title": "CAP Manage Product Catalog"
+        }
+      }
+    ]
+  },
+  {
+    "_version": "3.2.0",
+    "identification": {
+      "id": "capProductManagerWorkpageId",
+      "entityType": "workpage",
+      "title": "{{Title}}"
+    },
+    "payload": {
+      "workpageConfig": {
+        "title": "Products"
+      },
+      "rows": [
+        {
+          "id": "row-1",
+          "rowConfig": {},
+          "columns": [
+            {
+              "id": "col-11",
+              "columnConfig": {},
+              "cells": [
+                {
+                  "id": "cell-11",
+                  "cellConfig": {},
+                  "widgets": [
+                    {
+                      "id": "widg-11",
+                      "viz": {
+                        "appId": "miyasuta.managebooks",
+                        "vizId": "Books-manage"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "texts": [
+      {
+        "locale": "",
+        "textDictionary": {
+          "Title": "CAP Manage Product Work Page"
+        }
+      }
+    ]
+  },
+  {
+    "_version": "3.1.0",
+    "identification": {
+      "id": "capProductManagerPageId",
+      "entityType": "page",
+      "title": "{{pageTitle}}"
+    },
+    "payload": {
+      "sections": [
+        {
+          "id": "sec1",
+          "title": "{{sec1Title}}",
+          "viz": [
+            {
+              "appId": "miyasuta.managebooks",
+              "vizId": "Books-manage"
+            }
+          ]
+        }
+      ]
+    },
+    "texts": [
+      {
+        "locale": "",
+        "textDictionary": {
+          "pageTitle": "CAP Manage Product Page",
+          "sec1Title": "Section 1"
+        }
+      }
+    ]
+  },
+  {
+    "_version": "3.1.0",
+    "identification": {
+      "id": "capProductManagerSpaceId",
+      "entityType": "space",
+      "title": "{{spaceTitle}}"
+    },
+    "payload": {
+      "contentNodes": [
+        {
+          "type": "page",
+          "id": "capProductManagerWorkpageId"
+        },
+        {
+          "type": "page",
+          "id": "capProductManagerPageId"
+        }
+      ]
+    },
+    "texts": [
+      {
+        "locale": "",
+        "textDictionary": {
+          "spaceTitle": "CAP Manage Product Space"
+        }
+      }
+    ]
+  },
+  {
+    "_version": "3.1",
+    "identification": {
+      "id": "capProductManagerRole",
+      "entityType": "role",
+      "title": "CAP Product Manager Role"
+    },
+    "payload": {
+      "apps": [
+        {
+          "id": "miyasuta.managebooks"
+        }
+      ],
+      "catalogs": [
+        {
+          "id": "capProductManagerCatalogId"
+        }
+      ],
+      "spaces": [
+        {
+          "id": "capProductManagerSpaceId"
+        }
+      ]
+    }
+  }
+]
